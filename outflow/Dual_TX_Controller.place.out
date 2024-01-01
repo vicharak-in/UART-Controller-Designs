@@ -1,0 +1,191 @@
+
+Efinix FPGA Placement and Routing.
+Version: 2023.1.150 
+Compiled: Jun 23 2023.
+
+Copyright (C) 2013 - 2023 Efinix Inc. All rights reserved.
+
+
+The Tool Is Based on VPR of University of Toronto,
+a free open source code under MIT license.
+
+
+Running Placement and Routing for Family "Trion", Device "T120F324" ...
+
+***** Beginning stage netlist pre-processing ... *****
+Successfully Read in Verific binary Netlist dump file "/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.dbg.vdb".
+***** Beginning VDB Netlist Checker ... *****
+VDB Netlist Checker took 0.0470975 seconds.
+	VDB Netlist Checker took 0.05 seconds (approximately) in total CPU time.
+VDB Netlist Checker virtual memory usage: begin = 195.624 MB, end = 195.624 MB, delta = 0 MB
+VDB Netlist Checker resident set memory usage: begin = 62.324 MB, end = 62.58 MB, delta = 0.256 MB
+	VDB Netlist Checker peak resident set memory usage = 6726.49 MB
+***** Ending VDB Netlist Checker ... *****
+Reading core interface constraints from '/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.interface.csv'.
+Successfully processed interface constraints file "/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.interface.csv".
+Found 0 constant generator nets.
+Pass 0: Swept away 0 nets with no fanout.
+logical_block #7(jtag_inst1_DRCK) has no fanout.
+Removing input.
+logical_block #9(jtag_inst1_RUNTEST) has no fanout.
+Removing input.
+logical_block #14(jtag_inst1_TMS) has no fanout.
+Removing input.
+Pass 0: Swept away 3 blocks with no fanout.
+Pass 1: Swept away 0 nets with no fanout.
+Pass 1: Swept away 0 blocks with no fanout.
+Swept away 0 nets and 3 blocks in total.
+Removed 0 LUT buffers.
+Sweeped away 3 nodes.
+Successfully created VPR logical netlist from Verific binary DataBase file "/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.dbg.vdb".
+Netlist pre-processing took 0.107112 seconds.
+	Netlist pre-processing took 0.11 seconds (approximately) in total CPU time.
+Netlist pre-processing virtual memory usage: begin = 195.624 MB, end = 195.624 MB, delta = 0 MB
+Netlist pre-processing resident set memory usage: begin = 61.812 MB, end = 62.836 MB, delta = 1.024 MB
+	Netlist pre-processing peak resident set memory usage = 6726.49 MB
+***** Ending stage netlist pre-processing *****
+
+***** Beginning stage pre-packing ... *****
+***** Ending stage pre-packing *****
+
+***** Beginning stage packing ... *****
+Generate proto netlist for file "/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/work_pnr/Dual_TX_Controller.net_proto" took 0.00307 seconds
+Creating IO constraints file '/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/work_pnr/Dual_TX_Controller.io_place'
+Packing took 0.0211507 seconds.
+	Packing took 0.02 seconds (approximately) in total CPU time.
+Packing virtual memory usage: begin = 202.004 MB, end = 203.192 MB, delta = 1.188 MB
+Packing resident set memory usage: begin = 69.364 MB, end = 70.9 MB, delta = 1.536 MB
+	Packing peak resident set memory usage = 6726.49 MB
+***** Ending stage packing *****
+
+***** Beginning stage packed netlist loading ... *****
+Read proto netlist file /home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/work_pnr/Dual_TX_Controller.net_proto
+Read proto netlist for file "/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/work_pnr/Dual_TX_Controller.net_proto" took 0.000907 seconds
+Setup net and block data structure took 0.073731 seconds
+Packed netlist loading took 0.0988858 seconds.
+	Packed netlist loading took 0.06 seconds (approximately) in total CPU time.
+Packed netlist loading virtual memory usage: begin = 203.192 MB, end = 227.032 MB, delta = 23.84 MB
+Packed netlist loading resident set memory usage: begin = 70.9 MB, end = 94.82 MB, delta = 23.92 MB
+	Packed netlist loading peak resident set memory usage = 6726.49 MB
+***** Ending stage packed netlist loading *****
+
+***** Beginning stage pre-placement ... *****
+
+***** Ending stage pre-placement *****
+
+
+No SDC file found.  Using default timing constraint of 1 ns.
+NOTE:  Use --sdc_file <SDC_FILE> to override this behavior.
+
+***** Beginning stage initial placement ... *****
+Reading core interface constraints from '/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.interface.csv'.
+Successfully processed interface constraints file "/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.interface.csv".
+Writing IO placement constraints to '/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.interface.io'.
+
+Reading placement constraints from '/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.interface.io'.
+
+Reading placement constraints from '/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/work_pnr/Dual_TX_Controller.io_place'.
+WARNING(1): Clock driver clk should use the dedicated clock pad.
+WARNING(2): Clock driver jtag_inst1_TCK should use the dedicated clock pad.
+The driver, jtag_inst1_RESET, of control net, jtag_inst1_RESET, should be placed at a dedicated control pad location.
+***** Ending stage initial placement *****
+
+***** Beginning stage placement ... *****
+Create /home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller_after_qp.qdelay
+QPLACER STATIC DB USAGE DISABLED
+NumRegions 1
+Starting Global Placer with 4 threads ...
+
+ ----------     -------  --------------     -------
+  Iteration       WHPWL Worst Slack (ps) Convergence
+ ----------     -------  --------------     -------
+          1      110057           -3402         1.2%
+          2       79175           -3567         2.4%
+          3       71312           -4210         3.7%
+          4       61361           -3657         4.9%
+          5       47536           -3739         7.1%
+          6       41255           -4875        12.4%
+          7       38951           -6461        21.3%
+          8       49644           -7512        30.8%
+          9       55178           -8034        38.9%
+         10       60569           -7826        41.3%
+         11       62053           -7667        42.2%
+         12       67020           -7134        44.2%
+         13       54907           -7081        48.1%
+         14       69097           -7482        54.2%
+         15       71872           -7961        54.9%
+         16       73242           -7565        55.8%
+         17       73622           -7558        57.2%
+         18       67568           -7305        59.2%
+         19       80658           -7686        62.8%
+         20       70745           -7562        68.4%
+         21       72084           -7497        68.4%
+         22       70356           -7955        68.4%
+         23       62006           -7620        68.4%
+         24       70150           -8109        72.4%
+         25       60856           -7723        72.4%
+         26       65634           -7986        74.1%
+         27       63467           -8250        74.1%
+         28       68759           -7878        77.0%
+         29       60152           -8354        77.0%
+         30       65351           -8110        79.1%
+         31       62387           -8351        79.1%
+         32       65302           -8369        80.4%
+         33       61510           -8367        80.4%
+         34       66057           -7901        80.4%
+         35       58725           -8559        80.4%
+Starting Annealer
+
+ ----------     -------  --------------     -------
+  Iteration       WHPWL  Delay Max (ps)     R Limit
+ ----------     -------  --------------     -------
+          0       62006            9964        30.0
+          1       41831            9705        30.0
+          2       25345            8575        30.0
+          3       22727            8218        30.0
+          4       21470            8218        30.0
+          5       21069            8218        29.5
+          6       20707            8218        29.0
+          7       20312            8218        28.0
+          8       20122            8218        27.1
+          9       19852            8270        26.1
+         10       19766            8218        25.1
+         11       19794            8184        23.9
+         12       19546            8201        22.8
+         13       19426            8201        21.6
+         14       19121            8201        20.6
+         15       18961            8201        19.4
+         16       18756            8134        18.4
+         17       18500            8134        17.4
+         18       18181            8134        16.4
+         19       17931            8134        15.5
+         20       17939            8134        14.7
+         21       17784            8134        13.8
+         22       17620            8133        13.0
+         23       17569            8133        12.3
+         24       17517            8133        11.6
+         25       17379            8133        10.8
+         26       17174            8133        10.2
+         27       17165            8133         9.6
+         28       17111            8133         8.9
+         29       16889            8133         8.4
+         30       16858            8133         7.8
+         31       16733            8133         7.2
+         32       16501            8133         6.5
+Generate /home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller_after_qp.qdelay
+Placement successful: 1812 cells are placed
+Peak congestion smeared over 1/4 of the chip is 0.087737 at 6,0
+Congestion-weighted HPWL per net: 4.89232
+
+Reading placement constraints from '/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.qplace'.
+Finished Realigning Types (391 blocks needed type change)
+
+Completed placement consistency check successfully.
+Successfully created FPGA place file '/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.place'
+Placement took 8.83506 seconds.
+	Placement took 14.42 seconds (approximately) in total CPU time.
+Placement virtual memory usage: begin = 242.736 MB, end = 1171.99 MB, delta = 929.252 MB
+Placement resident set memory usage: begin = 111.332 MB, end = 457.728 MB, delta = 346.396 MB
+	Placement peak resident set memory usage = 6726.49 MB
+***** Ending stage placement *****
+

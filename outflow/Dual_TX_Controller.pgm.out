@@ -1,0 +1,23 @@
+
+Efinix FPGA Bitstream Generator.
+Version: 2023.1.150 
+Copyright (C) 2013 - 2023 Efinix Inc. All rights reserved.
+
+Compiled: Jun 23 2023.
+
+Using source file "/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/work_pnr/Dual_TX_Controller.lbf"
+Generating HEX programming file for device "T120F324", family "Trion"
+Using periphery source file "/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.lpf"
+Generating bit file: "/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.bit"
+HEX Generation Options Summary:
+	Listing options specified to bitstream generation:
+	spi_low_power_mode                       = on
+	oscillator_clock_divider                 = DIV8
+	io_weak_pullup                           = on
+	release_tri_then_reset                   = on
+Finished generating "/home/amritansh/Downloads/efinity/2023.1/project/Dual_TX_Controller/outflow/Dual_TX_Controller.hex"
+Efinity Bitstream Generator took 11.3946 seconds.
+	Efinity Bitstream Generator took 10.88 seconds (approximately) in total CPU time.
+Efinity Bitstream Generator virtual memory usage: begin = 62.26 MB, end = 200.9 MB, delta = 138.64 MB
+Efinity Bitstream Generator resident set memory usage: begin = 11.008 MB, end = 151.26 MB, delta = 140.252 MB
+	Efinity Bitstream Generator peak resident set memory usage = 6726.57 MB

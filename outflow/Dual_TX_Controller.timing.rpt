@@ -1,0 +1,700 @@
+
+Efinix Static Timing Analysis Report
+Version: 2023.1.150
+Date: Mon Jan  1 17:32:45 2024
+
+Copyright (C) 2013 - 2023  Inc. All rights reserved.
+
+Top-level Entity Name: Dual_TX_Controller
+
+SDC Filename: Not Specified
+
+Timing Model: C4
+	temperature : 0C to 85C
+	voltage : 1.2V +/-50mV
+	speedgrade : 4
+	technology : s40ll
+	status : final
+
+---------- Table of Contents (begin) ----------
+   1. Clock Frequency Summary
+   2. Clock Relationship Summary
+   3. Path Details for Max Critical Paths
+   4. Path Details for Min Critical Paths
+---------- Table of Contents (end) ------------
+
+---------- 1. Clock Frequency Summary (begin) ----------
+
+User target constrained clocks
+   Clock Name    Period (ns)  Frequency (MHz)   Waveform        Targets
+clk                 1.000        1000.000     {0.000 0.500} {clk}           
+jtag_inst1_TCK      1.000        1000.000     {0.000 0.500} {jtag_inst1_TCK}
+virtual_io_clock    1.000        1000.000     {0.000 0.500}                 
+
+Maximum possible analyzed clocks frequency
+  Clock Name   Period (ns)  Frequency (MHz)     Edge
+clk               6.289        159.008         (R-R)
+jtag_inst1_TCK    7.953        125.739         (R-R)
+
+Geomean max period: 7.072
+
+---------- Clock Frequency Summary (end) ---------------
+
+---------- 2. Clock Relationship Summary (begin) ----------
+
+Setup (Max) Clock Relationship
+  Launch Clock    Capture Clock   Constraint (ns)     Slack (ns)          Edge
+ clk              clk                  1.000            -5.289           (R-R)
+ clk              jtag_inst1_TCK       1.000            -7.663           (R-R)
+ jtag_inst1_TCK   clk                  1.000            -1.877           (R-R)
+ jtag_inst1_TCK   jtag_inst1_TCK       1.000            -6.953           (R-R)
+
+Hold (Min) Clock Relationship
+  Launch Clock    Capture Clock   Constraint (ns)     Slack (ns)          Edge
+ clk              clk                  0.000             0.221           (R-R)
+ clk              jtag_inst1_TCK       0.000             2.856           (R-R)
+ jtag_inst1_TCK   clk                  0.000            -2.066           (R-R)
+ jtag_inst1_TCK   jtag_inst1_TCK       0.000             0.307           (R-R)
+
+NOTE: Values are in nanoseconds.
+
+---------- Clock Relationship Summary (end) ---------------
+
+---------- 3. Path Details for Max Critical Paths (begin) ----------
+
+################################################################################
+Path Detail Report (clk vs jtag_inst1_TCK)
+################################################################################
+
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin    : edb_top_inst/la0/la_biu_inst/curr_state[2]~FF|CLK
+Path End      : edb_top_inst/la0/data_out_shift_reg[1]~FF|D      
+Launch Clock  : clk (RISE)                                       
+Capture Clock : jtag_inst1_TCK (RISE)                            
+Slack         : -7.663 (required time - arrival time)            
+Delay         : 3.397                                            
+
+Logic Level             : 4
+Non-global nets on path : 4
+Global nets on path     : 0
+
+Launch Clock Path Delay        : 13.946
++ Clock To Q + Data Path Delay :  3.797
+---------------------------------------
+End-of-path arrival time       : 17.743
+
+Constraint                     :  1.000
++ Capture Clock Path Delay     :  9.200
+- Clock Uncertainty            :  0.120
+---------------------------------------
+End-of-path required time      : 10.080
+
+Launch Clock Path
+                      name                         model name   delay (ns)  cumulative delay (ns) pins on net    location
+===========================================================================================================================
+clk                                                  inpad        0.000             0.000               0        (338,5)
+clk                                                  inpad        0.200             0.200               2        (338,5)
+clk                                                  net          8.956             9.156               2        (338,5)
+   Routing elements:
+      Manhattan distance of X:337, Y:313
+CLKBUF__1|I                                          gbuf         4.790            13.946               2        (1,318)
+CLKBUF__1|O                                          gbuf         0.000            13.946             530        (1,318)
+clk~O                                                net          0.000            13.946             530        (1,318)
+edb_top_inst/la0/la_biu_inst/curr_state[2]~FF|CLK    ff           0.000            13.946             530        (88,78)
+
+Data Path
+                     name                        model name   delay (ns)  cumulative delay (ns) pins on net    location
+=========================================================================================================================
+edb_top_inst/la0/la_biu_inst/curr_state[2]~FF|Q     ff          0.282             0.282              14        (88,78)
+edb_top_inst/la0/la_biu_inst/curr_state[2]          net         1.211             1.493              14        (88,78)
+   Routing elements:
+      Manhattan distance of X:10, Y:2
+edb_top_inst/LUT__3779|in[1]                        lut         0.000             1.493              14        (78,76)
+edb_top_inst/LUT__3779|out                          lut         0.000             1.493               2        (78,76)
+edb_top_inst/n2414                                  net         0.486             1.979               2        (78,76)
+   Routing elements:
+      Manhattan distance of X:0, Y:4
+edb_top_inst/LUT__3780|in[3]                        lut         0.000             1.979               2        (78,72)
+edb_top_inst/LUT__3780|out                          lut         0.000             1.979               2        (78,72)
+edb_top_inst/n2415                                  net         1.140             3.119               2        (78,72)
+   Routing elements:
+      Manhattan distance of X:14, Y:1
+edb_top_inst/LUT__3781|in[0]                        lut         0.000             3.119               2        (64,71)
+edb_top_inst/LUT__3781|out                          lut         0.000             3.119               2        (64,71)
+edb_top_inst/n2416                                  net         0.560             3.679               2        (64,71)
+   Routing elements:
+      Manhattan distance of X:0, Y:2
+edb_top_inst/LUT__3782|in[1]                        lut         0.000             3.679               2        (64,69)
+edb_top_inst/LUT__3782|out                          lut         0.000             3.679               2        (64,69)
+edb_top_inst/la0/data_out_shift_reg[1]~FF|D         ff          0.118             3.797               2        (64,69)
+
+Capture Clock Path
+                    name                       model name   delay (ns)  cumulative delay (ns) pins on net    location
+=======================================================================================================================
+jtag_inst1_TCK                                   inpad        0.000             0.000               0        (0,4)  
+jtag_inst1_TCK                                   inpad        0.200             0.200               2        (0,4)  
+jtag_inst1_TCK                                   net          4.210             4.410               2        (0,4)  
+   Routing elements:
+      Manhattan distance of X:1, Y:315
+CLKBUF__0|I                                      gbuf         4.790             9.200               2        (1,319)
+CLKBUF__0|O                                      gbuf         0.000             9.200             526        (1,319)
+jtag_inst1_TCK~O                                 net          0.000             9.200             526        (1,319)
+edb_top_inst/la0/data_out_shift_reg[1]~FF|CLK    ff           0.000             9.200             526        (64,69)
+
+################################################################################
+Path Detail Report (clk vs clk)
+################################################################################
+
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin    : edb_top_inst/la0/la_biu_inst/la_window_fill_cnt[9]~FF|CLK
+Path End      : edb_top_inst/la0/la_biu_inst/curr_state[0]~FF|D          
+Launch Clock  : clk (RISE)                                               
+Capture Clock : clk (RISE)                                               
+Slack         : -5.289 (required time - arrival time)                    
+Delay         : 5.769                                                    
+
+Logic Level             : 7
+Non-global nets on path : 7
+Global nets on path     : 0
+
+Launch Clock Path Delay        : 13.946
++ Clock To Q + Data Path Delay :  6.169
+---------------------------------------
+End-of-path arrival time       : 20.115
+
+Constraint                     :  1.000
++ Capture Clock Path Delay     : 13.946
+- Clock Uncertainty            :  0.120
+---------------------------------------
+End-of-path required time      : 14.826
+
+Launch Clock Path
+                          name                             model name   delay (ns)  cumulative delay (ns) pins on net    location
+===================================================================================================================================
+clk                                                          inpad        0.000             0.000               0        (338,5) 
+clk                                                          inpad        0.200             0.200               2        (338,5) 
+clk                                                          net          8.956             9.156               2        (338,5) 
+   Routing elements:
+      Manhattan distance of X:337, Y:313
+CLKBUF__1|I                                                  gbuf         4.790            13.946               2        (1,318) 
+CLKBUF__1|O                                                  gbuf         0.000            13.946             530        (1,318) 
+clk~O                                                        net          0.000            13.946             530        (1,318) 
+edb_top_inst/la0/la_biu_inst/la_window_fill_cnt[9]~FF|CLK    ff           0.000            13.946             530        (100,71)
+
+Data Path
+                         name                            model name   delay (ns)  cumulative delay (ns) pins on net    location
+=================================================================================================================================
+edb_top_inst/la0/la_biu_inst/la_window_fill_cnt[9]~FF|Q     ff          0.282             0.282              5         (100,71)
+edb_top_inst/la0/la_biu_inst/la_window_fill_cnt[9]          net         0.603             0.885              5         (100,71)
+   Routing elements:
+      Manhattan distance of X:0, Y:2
+edb_top_inst/LUT__4360|in[0]                                lut         0.000             0.885              5         (100,73)
+edb_top_inst/LUT__4360|out                                  lut         0.000             0.885              2         (100,73)
+edb_top_inst/n2753                                          net         1.011             1.896              2         (100,73)
+   Routing elements:
+      Manhattan distance of X:2, Y:2
+edb_top_inst/LUT__4363|in[1]                                lut         0.000             1.896              2         (98,71) 
+edb_top_inst/LUT__4363|out                                  lut         0.000             1.896              2         (98,71) 
+edb_top_inst/n2756                                          net         0.640             2.536              2         (98,71) 
+   Routing elements:
+      Manhattan distance of X:0, Y:5
+edb_top_inst/LUT__4371|in[0]                                lut         0.000             2.536              2         (98,76) 
+edb_top_inst/LUT__4371|out                                  lut         0.000             2.536              2         (98,76) 
+edb_top_inst/n2764                                          net         0.957             3.493              2         (98,76) 
+   Routing elements:
+      Manhattan distance of X:3, Y:0
+edb_top_inst/LUT__4379|in[0]                                lut         0.000             3.493              2         (95,76) 
+edb_top_inst/LUT__4379|out                                  lut         0.000             3.493              8         (95,76) 
+edb_top_inst/n2772                                          net         0.689             4.182              8         (95,76) 
+   Routing elements:
+      Manhattan distance of X:6, Y:0
+edb_top_inst/LUT__4380|in[0]                                lut         0.000             4.182              8         (89,76) 
+edb_top_inst/LUT__4380|out                                  lut         0.000             4.182              3         (89,76) 
+edb_top_inst/n2773                                          net         1.277             5.459              3         (89,76) 
+   Routing elements:
+      Manhattan distance of X:1, Y:3
+edb_top_inst/LUT__4381|in[2]                                lut         0.000             5.459              3         (88,79) 
+edb_top_inst/LUT__4381|out                                  lut         0.000             5.459              2         (88,79) 
+edb_top_inst/n2774                                          net         0.592             6.051              2         (88,79) 
+   Routing elements:
+      Manhattan distance of X:10, Y:0
+edb_top_inst/LUT__4420|in[2]                                lut         0.000             6.051              2         (78,79) 
+edb_top_inst/LUT__4420|out                                  lut         0.000             6.051              2         (78,79) 
+edb_top_inst/la0/la_biu_inst/curr_state[0]~FF|D             ff          0.118             6.169              2         (78,79) 
+
+Capture Clock Path
+                      name                         model name   delay (ns)  cumulative delay (ns) pins on net    location
+===========================================================================================================================
+clk                                                  inpad        0.000             0.000               0        (338,5)
+clk                                                  inpad        0.200             0.200               2        (338,5)
+clk                                                  net          8.956             9.156               2        (338,5)
+   Routing elements:
+      Manhattan distance of X:337, Y:313
+CLKBUF__1|I                                          gbuf         4.790            13.946               2        (1,318)
+CLKBUF__1|O                                          gbuf         0.000            13.946             530        (1,318)
+clk~O                                                net          0.000            13.946             530        (1,318)
+edb_top_inst/la0/la_biu_inst/curr_state[0]~FF|CLK    ff           0.000            13.946             530        (78,79)
+
+################################################################################
+Path Detail Report (jtag_inst1_TCK vs clk)
+################################################################################
+
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin    : edb_top_inst/la0/la_window_depth[0]~FF|CLK     
+Path End      : edb_top_inst/la0/la_biu_inst/curr_state[0]~FF|D
+Launch Clock  : jtag_inst1_TCK (RISE)                          
+Capture Clock : clk (RISE)                                     
+Slack         : -1.877 (required time - arrival time)          
+Delay         : 7.103                                          
+
+Logic Level             : 7
+Non-global nets on path : 7
+Global nets on path     : 0
+
+Launch Clock Path Delay        :  9.200
++ Clock To Q + Data Path Delay :  7.503
+---------------------------------------
+End-of-path arrival time       : 16.703
+
+Constraint                     :  1.000
++ Capture Clock Path Delay     : 13.946
+- Clock Uncertainty            :  0.120
+---------------------------------------
+End-of-path required time      : 14.826
+
+Launch Clock Path
+                   name                     model name   delay (ns)  cumulative delay (ns) pins on net    location
+====================================================================================================================
+jtag_inst1_TCK                                inpad        0.000             0.000               0        (0,4)  
+jtag_inst1_TCK                                inpad        0.200             0.200               2        (0,4)  
+jtag_inst1_TCK                                net          4.210             4.410               2        (0,4)  
+   Routing elements:
+      Manhattan distance of X:1, Y:315
+CLKBUF__0|I                                   gbuf         4.790             9.200               2        (1,319)
+CLKBUF__0|O                                   gbuf         0.000             9.200             526        (1,319)
+jtag_inst1_TCK~O                              net          0.000             9.200             526        (1,319)
+edb_top_inst/la0/la_window_depth[0]~FF|CLK    ff           0.000             9.200             526        (82,67)
+
+Data Path
+                     name                        model name   delay (ns)  cumulative delay (ns) pins on net    location
+=========================================================================================================================
+edb_top_inst/la0/la_window_depth[0]~FF|Q            ff          0.282             0.282              26        (82,67)
+edb_top_inst/la0/la_window_depth[0]                 net         1.033             1.315              26        (82,67)
+   Routing elements:
+      Manhattan distance of X:0, Y:6
+edb_top_inst/LUT__4279|in[1]                        lut         0.000             1.315              26        (82,61)
+edb_top_inst/LUT__4279|out                          lut         0.000             1.315               9        (82,61)
+edb_top_inst/n2672                                  net         0.597             1.912               9        (82,61)
+   Routing elements:
+      Manhattan distance of X:0, Y:14
+edb_top_inst/LUT__4305|in[1]                        lut         0.000             1.912               9        (82,75)
+edb_top_inst/LUT__4305|out                          lut         0.000             1.912               4        (82,75)
+edb_top_inst/n2698                                  net         1.520             3.432               4        (82,75)
+   Routing elements:
+      Manhattan distance of X:1, Y:9
+edb_top_inst/LUT__4306|in[0]                        lut         0.000             3.432               4        (81,66)
+edb_top_inst/LUT__4306|out                          lut         0.000             3.432               2        (81,66)
+edb_top_inst/n2699                                  net         1.015             4.447               2        (81,66)
+   Routing elements:
+      Manhattan distance of X:0, Y:4
+edb_top_inst/LUT__4319|in[0]                        lut         0.000             4.447               2        (81,62)
+edb_top_inst/LUT__4319|out                          lut         0.000             4.447               6        (81,62)
+edb_top_inst/n2712                                  net         1.301             5.748               6        (81,62)
+   Routing elements:
+      Manhattan distance of X:8, Y:20
+edb_top_inst/LUT__4347|in[1]                        lut         0.000             5.748               6        (89,82)
+edb_top_inst/LUT__4347|out                          lut         0.000             5.748               5        (89,82)
+edb_top_inst/n2740                                  net         1.045             6.793               5        (89,82)
+   Routing elements:
+      Manhattan distance of X:1, Y:3
+edb_top_inst/LUT__4381|in[0]                        lut         0.000             6.793               5        (88,79)
+edb_top_inst/LUT__4381|out                          lut         0.000             6.793               2        (88,79)
+edb_top_inst/n2774                                  net         0.592             7.385               2        (88,79)
+   Routing elements:
+      Manhattan distance of X:10, Y:0
+edb_top_inst/LUT__4420|in[2]                        lut         0.000             7.385               2        (78,79)
+edb_top_inst/LUT__4420|out                          lut         0.000             7.385               2        (78,79)
+edb_top_inst/la0/la_biu_inst/curr_state[0]~FF|D     ff          0.118             7.503               2        (78,79)
+
+Capture Clock Path
+                      name                         model name   delay (ns)  cumulative delay (ns) pins on net    location
+===========================================================================================================================
+clk                                                  inpad        0.000             0.000               0        (338,5)
+clk                                                  inpad        0.200             0.200               2        (338,5)
+clk                                                  net          8.956             9.156               2        (338,5)
+   Routing elements:
+      Manhattan distance of X:337, Y:313
+CLKBUF__1|I                                          gbuf         4.790            13.946               2        (1,318)
+CLKBUF__1|O                                          gbuf         0.000            13.946             530        (1,318)
+clk~O                                                net          0.000            13.946             530        (1,318)
+edb_top_inst/la0/la_biu_inst/curr_state[0]~FF|CLK    ff           0.000            13.946             530        (78,79)
+
+################################################################################
+Path Detail Report (jtag_inst1_TCK vs jtag_inst1_TCK)
+################################################################################
+
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin    : edb_top_inst/la0/opcode[2]~FF|CLK        
+Path End      : edb_top_inst/la0/address_counter[0]~FF|CE
+Launch Clock  : jtag_inst1_TCK (RISE)                    
+Capture Clock : jtag_inst1_TCK (RISE)                    
+Slack         : -6.953 (required time - arrival time)    
+Delay         : 7.376                                    
+
+Logic Level             : 7
+Non-global nets on path : 8
+Global nets on path     : 0
+
+Launch Clock Path Delay        :  9.200
++ Clock To Q + Data Path Delay :  7.833
+---------------------------------------
+End-of-path arrival time       : 17.033
+
+Constraint                     :  1.000
++ Capture Clock Path Delay     :  9.200
+- Clock Uncertainty            :  0.120
+---------------------------------------
+End-of-path required time      : 10.080
+
+Launch Clock Path
+              name                 model name   delay (ns)  cumulative delay (ns) pins on net    location
+===========================================================================================================
+jtag_inst1_TCK                       inpad        0.000             0.000               0        (0,4)  
+jtag_inst1_TCK                       inpad        0.200             0.200               2        (0,4)  
+jtag_inst1_TCK                       net          4.210             4.410               2        (0,4)  
+   Routing elements:
+      Manhattan distance of X:1, Y:315
+CLKBUF__0|I                          gbuf         4.790             9.200               2        (1,319)
+CLKBUF__0|O                          gbuf         0.000             9.200             526        (1,319)
+jtag_inst1_TCK~O                     net          0.000             9.200             526        (1,319)
+edb_top_inst/la0/opcode[2]~FF|CLK    ff           0.000             9.200             526        (46,60)
+
+Data Path
+                  name                     model name   delay (ns)  cumulative delay (ns) pins on net    location
+===================================================================================================================
+edb_top_inst/la0/opcode[2]~FF|Q               ff          0.282             0.282               6        (46,60)
+edb_top_inst/la0/opcode[2]                    net         1.046             1.328               6        (46,60)
+   Routing elements:
+      Manhattan distance of X:0, Y:12
+edb_top_inst/LUT__3564|in[1]                  lut         0.000             1.328               6        (46,48)
+edb_top_inst/LUT__3564|out                    lut         0.000             1.328               3        (46,48)
+edb_top_inst/n2244                            net         0.909             2.237               3        (46,48)
+   Routing elements:
+      Manhattan distance of X:20, Y:5
+edb_top_inst/LUT__3565|in[0]                  lut         0.000             2.237               3        (26,53)
+edb_top_inst/LUT__3565|out                    lut         0.000             2.237               2        (26,53)
+edb_top_inst/n2300                            net         0.689             2.926               2        (26,53)
+   Routing elements:
+      Manhattan distance of X:17, Y:0
+edb_top_inst/LUT__3570|in[0]                  lut         0.000             2.926               2        (43,53)
+edb_top_inst/LUT__3570|out                    lut         0.000             2.926               8        (43,53)
+edb_top_inst/n2304                            net         0.624             3.550               8        (43,53)
+   Routing elements:
+      Manhattan distance of X:0, Y:5
+edb_top_inst/LUT__3617|in[0]                  lut         0.000             3.550               8        (43,58)
+edb_top_inst/LUT__3617|out                    lut         0.000             3.550               2        (43,58)
+edb_top_inst/n2339                            net         1.114             4.664               2        (43,58)
+   Routing elements:
+      Manhattan distance of X:9, Y:2
+edb_top_inst/LUT__3628|in[1]                  lut         0.000             4.664               2        (34,56)
+edb_top_inst/LUT__3628|out                    lut         0.000             4.664               7        (34,56)
+edb_top_inst/n2350                            net         0.559             5.223               7        (34,56)
+   Routing elements:
+      Manhattan distance of X:0, Y:1
+edb_top_inst/LUT__3629|in[1]                  lut         0.000             5.223               7        (34,57)
+edb_top_inst/LUT__3629|out                    lut         0.000             5.223              39        (34,57)
+edb_top_inst/la0/op_reg_en                    net         1.100             6.323              39        (34,57)
+   Routing elements:
+      Manhattan distance of X:8, Y:1
+edb_top_inst/LUT__3640|in[1]                  lut         0.000             6.323              39        (42,58)
+edb_top_inst/LUT__3640|out                    lut         0.000             6.323              27        (42,58)
+edb_top_inst/la0/addr_ct_en                   net         1.335             7.658              27        (42,58)
+   Routing elements:
+      Manhattan distance of X:0, Y:32
+edb_top_inst/la0/address_counter[0]~FF|CE     ff          0.175             7.833              27        (42,26)
+
+Capture Clock Path
+                   name                     model name   delay (ns)  cumulative delay (ns) pins on net    location
+====================================================================================================================
+jtag_inst1_TCK                                inpad        0.000             0.000               0        (0,4)  
+jtag_inst1_TCK                                inpad        0.200             0.200               2        (0,4)  
+jtag_inst1_TCK                                net          4.210             4.410               2        (0,4)  
+   Routing elements:
+      Manhattan distance of X:1, Y:315
+CLKBUF__0|I                                   gbuf         4.790             9.200               2        (1,319)
+CLKBUF__0|O                                   gbuf         0.000             9.200             526        (1,319)
+jtag_inst1_TCK~O                              net          0.000             9.200             526        (1,319)
+edb_top_inst/la0/address_counter[0]~FF|CLK    ff           0.000             9.200             526        (42,26)
+
+---------- Path Details for Max Critical Paths (end) ---------------
+
+---------- 4. Path Details for Min Critical Paths (begin) ----------
+
+################################################################################
+Path Detail Report (jtag_inst1_TCK vs clk)
+################################################################################
+
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin    : edb_top_inst/la0/GEN_PROBE[4].genblk7.GEN_REGS[2].genblk1.internal_reg_pr[0]~FF|CLK  
+Path End      : edb_top_inst/la0/GEN_PROBE[4].genblk7.genblk3.trigger_cu/genblk1.genblk1.exp2[0]~FF|D
+Launch Clock  : jtag_inst1_TCK (RISE)                                                                
+Capture Clock : clk (RISE)                                                                           
+Slack         : -2.066 (arrival time - required time)                                                
+Delay         : 0.226                                                                                
+
+Logic Level             : 1
+Non-global nets on path : 1
+Global nets on path     : 0
+
+Launch Clock Path Delay        : 4.600
++ Clock To Q + Data Path Delay : 0.367
+--------------------------------------
+End-of-path arrival time       : 4.967
+
+Constraint                     : 0.000
++ Capture Clock Path Delay     : 6.973
++ Clock Uncertainty            : 0.060
+--------------------------------------
+End-of-path required time      : 7.033
+
+Launch Clock Path
+                                       name                                          model name   delay (ns)  cumulative delay (ns) pins on net    location
+=============================================================================================================================================================
+jtag_inst1_TCK                                                                         inpad        0.000             0.000               0        (0,4)  
+jtag_inst1_TCK                                                                         inpad        0.100             0.100               2        (0,4)  
+jtag_inst1_TCK                                                                         net          2.105             2.205               2        (0,4)  
+   Routing elements:
+      Manhattan distance of X:1, Y:315
+CLKBUF__0|I                                                                            gbuf         2.395             4.600               2        (1,319)
+CLKBUF__0|O                                                                            gbuf         0.000             4.600             526        (1,319)
+jtag_inst1_TCK~O                                                                       net          0.000             4.600             526        (1,319)
+edb_top_inst/la0/GEN_PROBE[4].genblk7.GEN_REGS[2].genblk1.internal_reg_pr[0]~FF|CLK    ff           0.000             4.600             526        (30,88)
+
+Data Path
+                                        name                                           model name   delay (ns)  cumulative delay (ns) pins on net    location
+===============================================================================================================================================================
+edb_top_inst/la0/GEN_PROBE[4].genblk7.GEN_REGS[2].genblk1.internal_reg_pr[0]~FF|Q         ff          0.141             0.141              3         (30,88)
+edb_top_inst/la0/GEN_PROBE[4].genblk7.GEN_REGS[2].genblk1.internal_reg_pr[0]              net         0.226             0.367              3         (30,88)
+   Routing elements:
+      Manhattan distance of X:0, Y:1
+edb_top_inst/LUT__4224|in[3]                                                              lut         0.000             0.367              3         (30,87)
+edb_top_inst/LUT__4224|out                                                                lut         0.000             0.367              2         (30,87)
+edb_top_inst/la0/GEN_PROBE[4].genblk7.genblk3.trigger_cu/genblk1.genblk1.exp2[0]~FF|D     ff          0.000             0.367              2         (30,87)
+
+Capture Clock Path
+                                         name                                            model name   delay (ns)  cumulative delay (ns) pins on net    location
+=================================================================================================================================================================
+clk                                                                                        inpad        0.000             0.000               0        (338,5)
+clk                                                                                        inpad        0.100             0.100               2        (338,5)
+clk                                                                                        net          4.478             4.578               2        (338,5)
+   Routing elements:
+      Manhattan distance of X:337, Y:313
+CLKBUF__1|I                                                                                gbuf         2.395             6.973               2        (1,318)
+CLKBUF__1|O                                                                                gbuf         0.000             6.973             530        (1,318)
+clk~O                                                                                      net          0.000             6.973             530        (1,318)
+edb_top_inst/la0/GEN_PROBE[4].genblk7.genblk3.trigger_cu/genblk1.genblk1.exp2[0]~FF|CLK    ff           0.000             6.973             530        (30,87)
+
+################################################################################
+Path Detail Report (clk vs clk)
+################################################################################
+
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin    : edb_top_inst/la0/la_biu_inst/fifo_with_read_inst/din_p2[26]~FF|CLK                            
+Path End      : edb_top_inst/la0/la_biu_inst/fifo_with_read_inst/simple_dual_port_ram_inst/ram__D$m12|WDATA[0]
+Launch Clock  : clk (RISE)                                                                                    
+Capture Clock : clk (RISE)                                                                                    
+Slack         : 0.221 (arrival time - required time)                                                          
+Delay         : 0.272                                                                                         
+
+Logic Level             : 0
+Non-global nets on path : 1
+Global nets on path     : 0
+
+Launch Clock Path Delay        : 6.973
++ Clock To Q + Data Path Delay : 0.281
+--------------------------------------
+End-of-path arrival time       : 7.254
+
+Constraint                     : 0.000
++ Capture Clock Path Delay     : 6.973
++ Clock Uncertainty            : 0.060
+--------------------------------------
+End-of-path required time      : 7.033
+
+Launch Clock Path
+                               name                                 model name   delay (ns)  cumulative delay (ns) pins on net    location
+============================================================================================================================================
+clk                                                                   inpad        0.000             0.000               0        (338,5)
+clk                                                                   inpad        0.100             0.100               2        (338,5)
+clk                                                                   net          4.478             4.578               2        (338,5)
+   Routing elements:
+      Manhattan distance of X:337, Y:313
+CLKBUF__1|I                                                           gbuf         2.395             6.973               2        (1,318)
+CLKBUF__1|O                                                           gbuf         0.000             6.973             530        (1,318)
+clk~O                                                                 net          0.000             6.973             530        (1,318)
+edb_top_inst/la0/la_biu_inst/fifo_with_read_inst/din_p2[26]~FF|CLK    ff           0.000             6.973             530        (32,22)
+
+Data Path
+                                             name                                               model name   delay (ns)  cumulative delay (ns) pins on net    location
+========================================================================================================================================================================
+edb_top_inst/la0/la_biu_inst/fifo_with_read_inst/din_p2[26]~FF|Q                               ff               0.141            0.141              2         (32,22)
+edb_top_inst/la0/la_biu_inst/fifo_with_read_inst/din_p2[26]                                    net              0.272            0.413              2         (32,22)
+   Routing elements:
+      Manhattan distance of X:17, Y:0
+edb_top_inst/la0/la_biu_inst/fifo_with_read_inst/simple_dual_port_ram_inst/ram__D$m12|WDATA[0] ram_4096x20     -0.132            0.281              2         (49,22)
+
+Capture Clock Path
+                                           name                                             model name   delay (ns)  cumulative delay (ns) pins on net    location
+====================================================================================================================================================================
+clk                                                                                        inpad           0.000             0.000               0        (338,5)
+clk                                                                                        inpad           0.100             0.100               2        (338,5)
+clk                                                                                        net             4.478             4.578               2        (338,5)
+   Routing elements:
+      Manhattan distance of X:337, Y:313
+CLKBUF__1|I                                                                                gbuf            2.395             6.973               2        (1,318)
+CLKBUF__1|O                                                                                gbuf            0.000             6.973             530        (1,318)
+clk~O                                                                                      net             0.000             6.973             530        (1,318)
+edb_top_inst/la0/la_biu_inst/fifo_with_read_inst/simple_dual_port_ram_inst/ram__D$m12|WCLK ram_4096x20     0.000             6.973             530        (49,22)
+
+################################################################################
+Path Detail Report (clk vs jtag_inst1_TCK)
+################################################################################
+
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin    : edb_top_inst/la0/la_biu_inst/rdy_sync~FF|CLK   
+Path End      : edb_top_inst/la0/la_biu_inst/rdy_sync_tff1~FF|D
+Launch Clock  : clk (RISE)                                     
+Capture Clock : jtag_inst1_TCK (RISE)                          
+Slack         : 2.856 (arrival time - required time)           
+Delay         : 0.402                                          
+
+Logic Level             : 0
+Non-global nets on path : 1
+Global nets on path     : 0
+
+Launch Clock Path Delay        : 6.973
++ Clock To Q + Data Path Delay : 0.543
+--------------------------------------
+End-of-path arrival time       : 7.516
+
+Constraint                     : 0.000
++ Capture Clock Path Delay     : 4.600
++ Clock Uncertainty            : 0.060
+--------------------------------------
+End-of-path required time      : 4.660
+
+Launch Clock Path
+                    name                      model name   delay (ns)  cumulative delay (ns) pins on net    location
+======================================================================================================================
+clk                                             inpad        0.000             0.000               0        (338,5)
+clk                                             inpad        0.100             0.100               2        (338,5)
+clk                                             net          4.478             4.578               2        (338,5)
+   Routing elements:
+      Manhattan distance of X:337, Y:313
+CLKBUF__1|I                                     gbuf         2.395             6.973               2        (1,318)
+CLKBUF__1|O                                     gbuf         0.000             6.973             530        (1,318)
+clk~O                                           net          0.000             6.973             530        (1,318)
+edb_top_inst/la0/la_biu_inst/rdy_sync~FF|CLK    ff           0.000             6.973             530        (52,9) 
+
+Data Path
+                     name                        model name   delay (ns)  cumulative delay (ns) pins on net    location
+=========================================================================================================================
+edb_top_inst/la0/la_biu_inst/rdy_sync~FF|Q          ff          0.141             0.141              3          (52,9)
+edb_top_inst/la0/la_biu_inst/rdy_sync               net         0.402             0.543              3          (52,9)
+   Routing elements:
+      Manhattan distance of X:6, Y:0
+edb_top_inst/la0/la_biu_inst/rdy_sync_tff1~FF|D     ff          0.000             0.543              3          (46,9)
+
+Capture Clock Path
+                      name                         model name   delay (ns)  cumulative delay (ns) pins on net    location
+===========================================================================================================================
+jtag_inst1_TCK                                       inpad        0.000             0.000               0        (0,4)  
+jtag_inst1_TCK                                       inpad        0.100             0.100               2        (0,4)  
+jtag_inst1_TCK                                       net          2.105             2.205               2        (0,4)  
+   Routing elements:
+      Manhattan distance of X:1, Y:315
+CLKBUF__0|I                                          gbuf         2.395             4.600               2        (1,319)
+CLKBUF__0|O                                          gbuf         0.000             4.600             526        (1,319)
+jtag_inst1_TCK~O                                     net          0.000             4.600             526        (1,319)
+edb_top_inst/la0/la_biu_inst/rdy_sync_tff1~FF|CLK    ff           0.000             4.600             526        (46,9) 
+
+################################################################################
+Path Detail Report (jtag_inst1_TCK vs jtag_inst1_TCK)
+################################################################################
+
+
+++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin    : edb_top_inst/edb_user_dr[19]~FF|CLK 
+Path End      : edb_top_inst/edb_user_dr[18]~FF|D   
+Launch Clock  : jtag_inst1_TCK (RISE)               
+Capture Clock : jtag_inst1_TCK (RISE)               
+Slack         : 0.307 (arrival time - required time)
+Delay         : 0.226                               
+
+Logic Level             : 0
+Non-global nets on path : 1
+Global nets on path     : 0
+
+Launch Clock Path Delay        : 4.600
++ Clock To Q + Data Path Delay : 0.367
+--------------------------------------
+End-of-path arrival time       : 4.967
+
+Constraint                     : 0.000
++ Capture Clock Path Delay     : 4.600
++ Clock Uncertainty            : 0.060
+--------------------------------------
+End-of-path required time      : 4.660
+
+Launch Clock Path
+               name                  model name   delay (ns)  cumulative delay (ns) pins on net    location
+=============================================================================================================
+jtag_inst1_TCK                         inpad        0.000             0.000               0        (0,4)  
+jtag_inst1_TCK                         inpad        0.100             0.100               2        (0,4)  
+jtag_inst1_TCK                         net          2.105             2.205               2        (0,4)  
+   Routing elements:
+      Manhattan distance of X:1, Y:315
+CLKBUF__0|I                            gbuf         2.395             4.600               2        (1,319)
+CLKBUF__0|O                            gbuf         0.000             4.600             526        (1,319)
+jtag_inst1_TCK~O                       net          0.000             4.600             526        (1,319)
+edb_top_inst/edb_user_dr[19]~FF|CLK    ff           0.000             4.600             526        (42,79)
+
+Data Path
+              name                 model name   delay (ns)  cumulative delay (ns) pins on net    location
+===========================================================================================================
+edb_top_inst/edb_user_dr[19]~FF|Q     ff          0.141             0.141              3         (42,79)
+edb_top_inst/edb_user_dr[19]          net         0.226             0.367              3         (42,79)
+   Routing elements:
+      Manhattan distance of X:2, Y:0
+edb_top_inst/edb_user_dr[18]~FF|D     ff          0.000             0.367              3         (44,79)
+
+Capture Clock Path
+               name                  model name   delay (ns)  cumulative delay (ns) pins on net    location
+=============================================================================================================
+jtag_inst1_TCK                         inpad        0.000             0.000               0        (0,4)  
+jtag_inst1_TCK                         inpad        0.100             0.100               2        (0,4)  
+jtag_inst1_TCK                         net          2.105             2.205               2        (0,4)  
+   Routing elements:
+      Manhattan distance of X:1, Y:315
+CLKBUF__0|I                            gbuf         2.395             4.600               2        (1,319)
+CLKBUF__0|O                            gbuf         0.000             4.600             526        (1,319)
+jtag_inst1_TCK~O                       net          0.000             4.600             526        (1,319)
+edb_top_inst/edb_user_dr[18]~FF|CLK    ff           0.000             4.600             526        (44,79)
+
+---------- Path Details for Min Critical Paths (end) ---------------
+
