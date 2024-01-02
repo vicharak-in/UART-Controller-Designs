@@ -1,0 +1,94 @@
+#!/bin/env python3
+from serial import Serial
+from random import randint
+from threading import Thread
+from time import sleep
+import sys
+
+def print_usage():
+    print("./own_term <PORT> <BAUDRATE>")
+
+class Reader(Thread):
+    def __init__(self, ser):
+        Thread.__init__(self)
+        self.daemon = True
+        self.ser = ser
+
+    def stop(self):
+        self._stop_event.set()
+
+    def run(self):
+        while True:
+            try:
+                buf = self.ser.read()
+                print(buf.decode(), end="", flush=True)
+
+            except:
+                print("Error reading from serial port")
+
+class Writer(Thread):
+    def __init__(self, ser):
+        Thread.__init__(self)
+        self.daemon = True
+        self.ser = ser
+
+    def run(self):
+        # Take input from the user and send it to the serial port
+        while True:
+            try:
+                sel = int(input("Select Slave: "))
+                length = int(input("Length of mess: "))
+
+                if length >= 64:
+                    length = 63
+
+                sel = sel & 3
+                print(bin(sel))
+                length = length & 63
+                print(bin(length))
+
+                buf = (sel << 6) + length
+                self.ser.write([buf])
+
+                print(buf)
+
+                message = input("Enter your message: ")
+
+                if len(message) > length:
+                    message = message[:length]
+                elif len(message) < length:
+                    for i in range(length - len(message)):
+                        message = message + b"\0"
+
+                for i in message:
+                    self.ser.write(i.encode())
+
+            except:
+                print("Error writing to serial port")
+
+# Check if enough arguments provided
+if len(sys.argv) != 3:
+    print_usage()
+    exit()
+
+port = sys.argv[1]
+baudrate = sys.argv[2]
+
+# Open the serial port
+ser = Serial(port, baudrate)
+
+# Start the reader and writer threads
+reader = Reader(ser)
+writer = Writer(ser)
+reader.start()
+writer.start()
+
+while True:
+    # Ctrl + C to exit
+    try:
+        sleep(1000)
+    except KeyboardInterrupt:
+        print("Exiting...")
+        break
+
+ser.close()
