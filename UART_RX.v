@@ -13,20 +13,12 @@ module UART_RX
   parameter RX_STOP_BIT  = 3'b011;
   parameter CLEANUP      = 3'b100;
   
-<<<<<<< HEAD
-  reg [$clog2(CLKS_PER_BIT):0] r_Clock_Count = 0;
-=======
   reg [7:0] r_Clock_Count = 0;
->>>>>>> refs/remotes/origin/main
   reg [2:0] r_Bit_Index   = 0; //8 bits total
   reg [7:0] r_RX_Byte     = 0;
   reg       r_RX_DV       = 0;
   reg [2:0] r_SM_Main     = 0;
   
-<<<<<<< HEAD
-=======
-  
->>>>>>> refs/remotes/origin/main
   // Purpose: Control RX state machine
   always @(posedge i_Clock)
   begin
@@ -126,10 +118,6 @@ module UART_RX
   end
   
   assign o_RX_DV   = r_RX_DV;
-<<<<<<< HEAD
   assign o_RX_Byte = r_RX_Byte;
-=======
-  assign o_RX_Byte = r_RX_DV ? r_RX_Byte : 0;
->>>>>>> refs/remotes/origin/main
   
 endmodule // UART_RX
